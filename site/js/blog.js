@@ -7,6 +7,7 @@
   'use strict';
   var cfg = window.IMRC_BLOG || {};
   var DEMO = !(cfg.supabaseUrl && cfg.supabaseAnonKey);
+  var DEMO_UI = DEMO && /[?&]demo(=|&|$)/.test(location.search);   // role switcher is for developers only: /blog/?demo=1
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
   var WRITERS = ['author', 'trusted_author', 'reviewer', 'admin'];
@@ -65,8 +66,8 @@
       demo: true,
       session: function () { var r = role(); return Promise.resolve(r === 'visitor' ? null : { id: r === 'reviewer' ? 'u-rev' : me.id, name: r === 'reviewer' ? 'Demo reviewer' : me.name, role: r }); },
       setRole: function (r) { localStorage.setItem(R, r); },
-      signIn: function () { return Promise.reject(new Error('Demo mode: use the role switcher above.')); },
-      magicLink: function () { return Promise.reject(new Error('Demo mode: use the role switcher above.')); },
+      signIn: function () { return Promise.reject(new Error('Sign-in is not available yet. Please check back soon.')); },
+      magicLink: function () { return Promise.reject(new Error('Sign-in is not available yet. Please check back soon.')); },
       signUp: function (d) {
         var a = JSON.parse(localStorage.getItem('imrc_demo_apps') || '[]');
         a.push({ id: 'a' + Date.now(), display_name: d.name, email: d.email, bio: d.bio, affiliation: d.affiliation, motivation: d.motivation, created_at: new Date().toISOString(), application_status: 'pending', application_note: '' });
@@ -286,7 +287,7 @@
 
   /* ---------- shared UI ---------- */
   function demoBar(onChange) {
-    if (!DEMO) return;
+    if (!DEMO_UI) return;
     var host = $('#blog-demo'); if (!host) return;
     var cur = localStorage.getItem('imrc_demo_role') || 'visitor';
     host.hidden = false;
@@ -336,6 +337,7 @@
         $('#blog-review-link').hidden = !staff;
         if (staff) api.listApplications('pending').then(function (a) { $('#blog-review-count').textContent = a.length; $('#blog-review-count').hidden = !a.length; }).catch(function () {});
         $('#blog-signin').hidden = !!s;
+        $('#blog-signin-link').hidden = !!s; $('#blog-signout-top').hidden = !s;
         $('#blog-pending').hidden = !(s && !isWriter(s));
         if (isWriter(s)) {
           $('#blog-who').textContent = s.name;
@@ -650,7 +652,7 @@
     var why = $('#j-why'), count = $('#j-why-count');
     function upd() { var n = why.value.trim().length; count.textContent = n + ' / 500 (at least 50)'; count.style.color = n > 500 ? 'var(--err)' : ''; }
     why.addEventListener('input', upd); upd();
-    if (DEMO) $('#join-demo').hidden = false;
+    if (DEMO_UI) $('#join-demo').hidden = false;
     if (cfg.turnstileSiteKey && !DEMO) {
       var iv = setInterval(function () { if (window.turnstile) { clearInterval(iv); tsId = window.turnstile.render('#ts-box', { sitekey: cfg.turnstileSiteKey }); } }, 200);
     }

@@ -35,7 +35,8 @@ def _blog_page(path, title, desc, h1, lead, body, mode, pos="img2:50% 50%"):
 
 def blog():
     path = "/blog/"
-    body = f'''<section class="section-tight"><div class="wrap"><div id="blog-demo" class="notice" hidden></div></div></section>
+    body = f'''<section class="section-tight"><div class="wrap"><div id="blog-demo" class="notice" hidden></div>
+<div class="btn-row" id="blog-auth" style="justify-content:flex-end"><a id="blog-signin-link" class="btn btn-line btn-sm" href="#blog-signin-wrap"><span>Sign in</span><span class="arr-wrap">{icon("arrow-right", "arr")}</span></a><button type="button" id="blog-signout-top" class="btn btn-line btn-sm" data-signout hidden><span>Sign out</span><span class="arr-wrap">{icon("arrow-right", "arr")}</span></button></div></div></section>
 <section class="section" style="padding-top:clamp(24px,4vw,48px)" aria-labelledby="posts-h"><div class="wrap">
 
 <div id="blog-mine" class="card reveal in" hidden style="margin-bottom:clamp(32px,5vw,56px)">
