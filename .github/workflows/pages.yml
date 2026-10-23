@@ -1,0 +1,29 @@
+# Publishes site/ to GitHub Pages at https://<user>.github.io/IMRC/.
+# The site uses root-absolute links (/css/..., /about/), so the build copy gets them prefixed with /IMRC.
+# Source files are not changed. Remove the rewrite step if you move to a custom domain.
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: { contents: read, pages: write, id-token: write }
+concurrency: { group: pages, cancel-in-progress: true }
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: "${{ steps.deployment.outputs.page_url }}" }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prefix absolute links with /IMRC
+        run: |
+          cp -R site _site && touch _site/.nojekyll
+          find _site -type f \( -name '*.html' -o -name '*.xml' -o -name '*.txt' \) -print0 | xargs -0 perl -pi -e 's{(["\x27(=])/(?=[A-Za-z_?#])}{$1/IMRC/}g; s{(["\x27(])/(?=["\x27)])}{$1/IMRC/}g'
+          find _site -type f -name '*.css' -print0 | xargs -0 perl -pi -e 's{url\((["\x27]?)/(?=[A-Za-z])}{url($1/IMRC/}g'
+          find _site -type f -name '*.js' -print0 | xargs -0 perl -pi -e 's{(["\x27])/(?=[A-Za-z_?#])(?![gi][,);])}{$1/IMRC/}g'
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: _site }
+      - id: deployment
+        uses: actions/deploy-pages@v4
