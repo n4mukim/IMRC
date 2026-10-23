@@ -1,0 +1,22 @@
+# dependencies and build output
+node_modules/
+.next/
+.vercel/
+*.tsbuildinfo
+__pycache__/
+
+# secrets (only .env.example is committed)
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+
+# large working files that are not part of the website (the site uses its own copies in site/assets and site/img)
+IMRC.ai
+Assets/
+Images/
+References/
+/[0-9].png
+IMRC — *.png

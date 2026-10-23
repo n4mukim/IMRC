@@ -1,0 +1,36 @@
+# GitHub Actions template: rebuild and publish the static site whenever the blog changes.
+# Copy to .github/workflows/rebuild-blog.yml in the repository that holds this project.
+#
+# Triggers: (1) a Supabase Database Webhook (table `posts`, events INSERT, UPDATE, DELETE) that POSTs to GitHub's
+# repository_dispatch API, (2) a nightly safety net, (3) the manual "Run workflow" button.
+# Repository secrets: SUPABASE_URL, SUPABASE_ANON_KEY (public anon key only), plus your host's deploy token.
+name: Rebuild blog
+on:
+  repository_dispatch:
+    types: [blog-changed]
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+concurrency: { group: rebuild-blog, cancel-in-progress: true }
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Fetch published posts (public key; keeps the old file if anything fails)
+        run: python3 tools/fetch_posts.py
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      - name: Test and build
+        run: |
+          python3 -m unittest discover -s tools -p "test_*.py"
+          python3 tools/build.py
+      # Publish the `site/` folder with your host's action, for example:
+      # - uses: netlify/actions/cli@master
+      #   with: { args: deploy --dir=site --prod }
+      #   env: { NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}, NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }} }

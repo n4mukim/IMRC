@@ -1,0 +1,6 @@
+/research /blog/ 301
+/research/ /blog/ 301
+/research/* /blog/ 301
+/articles /blog/ 301
+/articles/ /blog/ 301
+/articles/* /blog/ 301
