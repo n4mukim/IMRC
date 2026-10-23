@@ -31,10 +31,10 @@ legacy_file = Path(__file__).parent / "legacy_articles.json"       # [{"old": "/
 legacy = json.loads(legacy_file.read_text(encoding="utf8")) if legacy_file.exists() else []
 specific = [f"{x['old']} /blog/{x['slug']}/ 301" for x in legacy]
 write("_redirects", "\n".join(specific + redirects) + "\n")
-write("vercel.json", json.dumps({"redirects": [{"source": x["old"], "destination": f"/blog/{x['slug']}/", "permanent": True} for x in legacy] + [
+(SITE.parent / "vercel.json").write_text(json.dumps({"framework": None, "buildCommand": None, "installCommand": None, "outputDirectory": "site", "redirects": [{"source": x["old"], "destination": f"/blog/{x['slug']}/", "permanent": True} for x in legacy] + [
     {"source": "/research/:path*", "destination": "/blog/", "permanent": True},
     {"source": "/articles/:path*", "destination": "/blog/", "permanent": True}],
-    "headers": security_headers.vercel_headers()}, indent=2) + "\n")
+    "headers": security_headers.vercel_headers()}, indent=2) + "\n", encoding="utf-8")   # repo root, so Vercel serves site/ with no dashboard settings
 write("_headers", security_headers.headers_file())
 write("research/index.html", '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved to the blog · IMRC</title><meta http-equiv="refresh" content="0; url=/blog/"><link rel="canonical" href="' + BASE_URL + '/blog/"><meta name="robots" content="noindex"></head><body><p>This page moved. <a href="/blog/">Go to the IMRC blog</a>.</p></body></html>\n')
 
