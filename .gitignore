@@ -15,8 +15,8 @@ __pycache__/
 
 # large working files that are not part of the website (the site uses its own copies in site/assets and site/img)
 IMRC.ai
-Assets/
-Images/
-References/
+/Assets/
+/Images/
+/References/
 /[0-9].png
 IMRC — *.png
