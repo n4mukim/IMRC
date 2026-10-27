@@ -93,6 +93,21 @@
     }).join("");
   });
 
+  /* dates under each garden project (sessions whose `project` or program title names it); "Dates to be announced" stays until one is posted */
+  d.querySelectorAll(".proj-dates").forEach(function (box) {
+    var name = (box.getAttribute("data-project") || "").toLowerCase();
+    var mine = sessions.filter(function (s) { return (s.project || "").toLowerCase() === name || (s.program || "").toLowerCase().indexOf(name) > -1; });
+    if (!mine.length) return;
+    var tba = box.parentNode.querySelector(".proj-tba"); if (tba) tba.hidden = true;
+    box.innerHTML = '<ul class="proj-list">' + mine.map(function (s) {
+      var dt = new Date(s.start);
+      var when = dt.toLocaleDateString(locale, { weekday: "long", month: "long", day: "numeric" }) + " · " + dt.toLocaleTimeString(locale, { hour: "numeric", minute: "2-digit" });
+      var where = (S[s.format] || s.format || "") + (s.place ? " · " + s.place : "");
+      var cta = s.status === "closed" || !s.url ? "" : ' <a class="link-arrow" href="' + esc(s.url) + '">' + (s.status === "waitlist" ? S.waitlist : S.register) + '</a>';
+      return '<li><strong>' + esc(when) + '</strong><br><span class="muted small">' + esc(where) + '</span>' + cta + '</li>';
+    }).join("") + '</ul>';
+  });
+
   var filt = d.getElementById("sess-filters");
   if (filt && sessions.length) {
     filt.hidden = false;

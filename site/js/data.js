@@ -2,7 +2,7 @@
    Add real items here; empty arrays keep the empty-state messages on the page.
    Add ?demo=1 to any page URL to preview how filled cards look (sample data, clearly labelled).
 
-   Session shape:
+   Session shape (put the project name, e.g. "Lotus Project", in `program` or in an optional `project` field and the date also shows under that project in The IMRC Garden):
    { program:"Program title", category:"healing", service:"Psychoeducation",
      start:"2026-11-14T10:00", end:"2026-11-14T12:00", tz:"America/Toronto",
      format:"online|in-person|hybrid", language:"en|ko|ja", place:"Zoom",

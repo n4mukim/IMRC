@@ -330,11 +330,11 @@ def programs():
         return n if L() == "en" else f'{tr[0] if L() == "ko" else tr[1]} <span class="muted small" lang="en">({n})</span>'
     cat_html = "".join(
         f'<div class="card reveal" style="--i:{i % 3}"><span class="icon-badge">{icon(ic)}</span><h3>{_gname(n, tr)}</h3><p>{d}</p>'
-        f'<p class="small"><span class="tag">{t("Dates to be announced", "일정 추후 공지", "日程は後日発表")}</span></p></div>'
+        f'<div class="proj-dates" data-project="{n}"></div><p class="small proj-tba"><span class="tag">{t("Dates to be announced", "일정 추후 공지", "日程は後日発表")}</span></p></div>'
         for i, (n, d, ic, tr) in enumerate(garden))
     allp = f'''<section class="section" id="all" aria-labelledby="all-h"><div class="wrap">
 <div class="sec-head reveal">{eyebrow(t("All Programs", "전체 프로그램", "すべてのプログラム"))}<h2 id="all-h" class="h2">{t("The IMRC Garden", "IMRC 가든", "IMRCガーデン")}</h2>
-<p class="lead">{t("Six projects, each named for something that grows. Sessions appear in the calendar as they open.", "자라나는 것들의 이름을 딴 여섯 개의 프로젝트입니다. 세션은 열리는 대로 캘린더에 표시됩니다.", "育つものの名前をつけた6つのプロジェクト。セッションは開催が決まり次第、カレンダーに表示されます。")} {todo("[Confirm service type, format, language and dates for each project]")}</p></div>
+<p class="lead">{t("Six projects, each named for something that grows. Sessions appear in the calendar as they open.", "자라나는 것들의 이름을 딴 여섯 개의 프로젝트입니다. 세션은 열리는 대로 캘린더에 표시됩니다.", "育つものの名前をつけた6つのプロジェクト。セッションは開催が決まり次第、カレンダーに表示されます。")}</p></div>
 <div class="cards">{cat_html}</div></div></section>'''
 
     flagship = f'''<section class="section dark nature photo" style="--img:url(/img/img4.jpg);--pos:50% 55%" id="flagship" aria-labelledby="fl-h"><div class="wrap split">
