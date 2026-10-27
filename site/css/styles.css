@@ -514,9 +514,6 @@ em.plain{font-style:normal;border:0;background:none;padding:0;color:var(--forest
 .ocards{display:grid;gap:clamp(14px,2vw,24px);grid-template-columns:repeat(4,1fr);text-align:left}
 .ocard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden;text-decoration:none;box-shadow:0 14px 34px -22px rgba(0,61,28,.35);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
 .ocard:hover{transform:translateY(-6px);box-shadow:0 22px 44px -22px rgba(0,61,28,.45)}
-.ocard-img{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:url(/assets/gradient.jpg) var(--pos,50% 50%)/260% auto no-repeat}
-.ocard-img::after{content:"";position:absolute;right:8%;top:52%;width:46%;aspect-ratio:1;border-radius:50%;background:var(--c);transition:transform .6s var(--ease)}
-.ocard:hover .ocard-img::after{transform:translateY(-8%)}
 .ocard-body{display:flex;flex-direction:column;flex:1;padding:clamp(20px,2.2vw,28px)}
 .ocard-who{font-weight:500;font-size:.95rem;color:var(--lab,var(--green-btn));margin-bottom:.5rem}
 .ocard h3{font-size:clamp(1.2rem,1.6vw,1.45rem);font-weight:500;line-height:1.2;color:var(--black);margin-bottom:.7rem;max-width:none}

@@ -94,8 +94,7 @@ def home():
     opos = ["8% 20%", "55% 0%", "100% 70%", "40% 100%"]
     more = t("Learn more", "자세히 보기", "詳しく見る")
     ocards = "".join(
-        f'<a class="ocard reveal" style="--i:{i};--c:{ocol[i]};--lab:{olab[i]};--pos:{opos[i]}" role="listitem" href="{h}"><span class="ocard-img" aria-hidden="true"></span>'
-        f'<span class="ocard-body"><span class="ocard-who">{w}</span><h3>{ti}</h3><p>{d}</p><span class="ocard-more">{more}{icon("arrow-right")}</span></span></a>'
+        f'<a class="ocard reveal" style="--i:{i};--lab:{olab[i]}" role="listitem" href="{h}"><span class="ocard-body"><span class="ocard-who">{w}</span><h3>{ti}</h3><p>{d}</p><span class="ocard-more">{more}{icon("arrow-right")}</span></span></a>'
         for i, (w, ti, d, img, h) in enumerate(offer))
     mission = f'''<section class="section" aria-labelledby="mission-h" style="padding-top:0"><div class="wrap center">
 <div class="intro reveal">{eyebrow(t("Our mission", "미션", "ミッション"))}<h2 id="mission-h" class="h2">{t("To nurture culturally grounded therapists and strengthen resilience in the communities we serve.",
