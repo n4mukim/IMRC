@@ -525,12 +525,10 @@ em.plain{font-style:normal;border:0;background:none;padding:0;color:var(--forest
 @media(max-width:560px){.ocards{grid-template-columns:1fr}}
 .intro .lead{text-wrap:balance}
 
-/* home: "choose your path" cards are text-only */
-.pcards .pcard{aspect-ratio:auto;min-height:0;justify-content:flex-start;gap:.2rem;padding:clamp(24px,3vw,36px) clamp(24px,3vw,36px) clamp(76px,7vw,88px);background:var(--tint);border:1px solid var(--line);color:var(--forest);box-shadow:none}
-.pcards .pcard::before,.pcards .pcard::after{display:none}
-.pcards .pcard .dot{position:static;display:block;margin-bottom:1.1rem;background:var(--green);opacity:1}
-.pcards .pcard .who{color:var(--forest-2);margin-bottom:.6rem}
-.pcards .pcard h3{color:var(--forest);max-width:none}
-.pcards .pcard p{color:var(--ink-2);max-width:none;padding-right:0}
-.pcards .pcard .go{background:var(--green);color:var(--black);right:1.4rem;bottom:1.4rem}
-.pcards .pcard:hover{background:var(--tint-2)}
+/* home: "choose your path" photo cards with a semi-transparent colour tint: green = seeking support, blue = clinicians, yellow = funders and partners */
+.pcard.t-green{--tint-c:rgba(0,166,79,.55);--btn:#00A64F}
+.pcard.t-blue{--tint-c:rgba(14,125,194,.55);--btn:#0E7DC2}
+.pcard.t-yellow{--tint-c:rgba(255,204,6,.5);--btn:#FFCC06}
+.pcard.t-green::after,.pcard.t-blue::after,.pcard.t-yellow::after{background:linear-gradient(to top,rgba(0,25,12,.78),rgba(0,25,12,0) 62%),var(--tint-c)}
+.pcard.t-green .go,.pcard.t-blue .go,.pcard.t-yellow .go{background:var(--btn);color:#fff}
+.pcard.t-green .dot,.pcard.t-blue .dot,.pcard.t-yellow .dot{background:var(--btn);width:12px;height:12px;opacity:1}
