@@ -89,13 +89,13 @@ def home():
         (t("Clinical supervision and professional training for therapists from diverse backgrounds", "다양한 배경의 치료사를 위한 임상 슈퍼비전과 전문 교육", "多様な背景を持つセラピストのための臨床スーパービジョンと専門トレーニング"), eu("/professionals/")),
     ]
     offer_html = "".join(f'<li><a href="{h}"><span>{l}</span><span class="go">{icon("arrow-right")}</span></a></li>' for l, h in offer)
-    mission = f'''<section class="section" aria-labelledby="mission-h"><div class="wrap split">
-<div class="reveal">{eyebrow(t("Our mission", "미션", "ミッション"))}<h2 id="mission-h" class="h2">{t("To nurture the next generation of values-oriented, culturally grounded therapists, and to strengthen resilience in the communities we serve.",
-                                                                                                        "가치 지향적이고 문화에 뿌리를 둔 차세대 치료사를 길러내고, 우리가 함께하는 지역사회의 회복탄력성을 키웁니다.",
-                                                                                                        "価値観を大切にし、文化に根ざした次世代のセラピストを育て、私たちが関わる地域社会のレジリエンスを高めること。")}</h2>
-<p style="margin-top:1.6rem" class="lead">{t("Compassion, respect for nature and animals, and a commitment to community are part of everything we do. We work toward a more peaceful world across cultures.",
-                                              "자비와 연민, 자연과 동물에 대한 존중, 공동체에 대한 헌신이 우리가 하는 모든 일의 바탕입니다. 문화를 넘어 더 평화로운 세상을 향해 나아갑니다.",
-                                              "思いやり、自然と動物への敬意、コミュニティへの献身が、私たちのあらゆる活動の土台です。文化を越えて、より平和な世界を目指します。")}</p></div>
+    mission = f'''<section class="section mission-grad" aria-labelledby="mission-h"><div class="wrap split">
+<div class="reveal">{eyebrow(t("Our mission", "미션", "ミッション"))}<h2 id="mission-h" class="h2">{t("To nurture culturally grounded therapists and strengthen resilience in the communities we serve.",
+                                                                                                        "문화에 뿌리를 둔 치료사를 길러내고, 지역사회의 회복탄력성을 키웁니다.",
+                                                                                                        "文化に根ざしたセラピストを育て、地域社会のレジリエンスを高めること。")}</h2>
+<p style="margin-top:1.6rem" class="lead">{t("Compassion, respect for nature and commitment to community guide everything we do.",
+                                              "자비, 자연에 대한 존중, 공동체에 대한 헌신이 우리의 모든 활동을 이끕니다.",
+                                              "思いやり、自然への敬意、コミュニティへの献身が、私たちの活動の土台です。")}</p></div>
 <div class="reveal" style="--i:1">{eyebrow(t("What we offer", "제공하는 것", "提供するもの"))}<ul class="linklist">{offer_html}</ul></div></div></section>'''
 
     quote = f'''<section class="section quote" style="--img:url(/img/img3.jpg)" aria-label="{t("A thought that guides our work", "우리가 마음에 두는 문장", "私たちが大切にしている言葉")}"><div class="wrap reveal"><figure style="margin:0"><blockquote lang="en"><p style="margin:0">“The universe is a communion of subjects, not a collection of objects.”</p></blockquote>
