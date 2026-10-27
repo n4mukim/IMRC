@@ -356,7 +356,7 @@ def programs():
 <div class="grid-2" style="margin-top:2rem">
 <div class="card card-sage"><h3>{t("How registration works", "신청 방법", "申し込みの流れ")}</h3><p>{t("Registration for therapy and support groups goes through Jane App only. Professional workshops use Stripe checkout. This site stores no booking data and no personal health information.", "치료 및 지원 그룹 신청은 Jane App을 통해서만 진행됩니다. 전문가 워크숍은 Stripe 결제를 사용합니다. 이 사이트에는 예약 정보나 개인 건강 정보가 저장되지 않습니다.", "セラピーやサポートグループの申し込みは、Jane Appのみで受け付けます。専門職向けワークショップはStripeで決済します。このサイトには、予約情報や個人の健康情報は保存されません。")}</p></div>
 {crisis_box()}</div></div></section>'''
-    body = hero + allp + flagship + cmh + calendar
+    body = hero + calendar + allp + flagship + cmh
     return path, page(path, t("Programs & Events", "프로그램 · 행사", "プログラム・イベント"),
                       t("Group programs, workshops and community events at IMRC, with the service type listed for each.", "IMRC의 그룹 프로그램, 워크숍, 커뮤니티 행사. 각 프로그램의 서비스 유형을 함께 안내합니다.", "IMRCのグループプログラム、ワークショップ、コミュニティイベント。各プログラムのサービスの種類を明記しています。"),
                       body, crumbs=[("Home", u("/")), ("Programs & Events", u(path))])

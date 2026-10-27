@@ -82,7 +82,7 @@ html:lang(ko) .eyebrow,html:lang(ja) .eyebrow{letter-spacing:.06em;text-transfor
 .btn-dark,.btn-green{background:var(--forest);color:#fff}
 .btn-dark .arr-wrap,.btn-green .arr-wrap{background:#fff;color:var(--forest)}
 /* special: yellow (register) and blue (practitioner / booking) */
-.btn-yellow{background:var(--yellow);color:var(--black)}
+.btn-yellow{background:var(--green);color:var(--black)}
 .btn-yellow .arr-wrap{background:var(--black);color:#fff}
 .btn-reg{background:var(--green-btn);color:#fff}
 .btn-reg .arr-wrap{background:#fff;color:var(--green-btn)}
