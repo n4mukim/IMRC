@@ -96,7 +96,7 @@ def home():
     ocards = "".join(
         f'<a class="ocard reveal" style="--i:{i};--lab:{olab[i]}" role="listitem" href="{h}"><span class="ocard-body"><span class="ocard-who">{w}</span><h3>{ti}</h3><p>{d}</p><span class="ocard-more">{more}{icon("arrow-right")}</span></span></a>'
         for i, (w, ti, d, img, h) in enumerate(offer))
-    mission = f'''<section class="section" aria-labelledby="mission-h" style="padding-top:0"><div class="wrap center">
+    mission = f'''<section class="section" aria-labelledby="mission-h" style="padding-top:clamp(64px,9vw,130px)"><div class="wrap center">
 <div class="intro reveal">{eyebrow(t("Our mission", "미션", "ミッション"))}<h2 id="mission-h" class="h2">{t("To nurture culturally grounded therapists and strengthen resilience in the communities we serve.",
                                                                                                         "문화에 뿌리를 둔 치료사를 길러내고, 지역사회의 회복탄력성을 키웁니다.",
                                                                                                         "文化に根ざしたセラピストを育て、地域社会のレジリエンスを高めること。")}</h2>
