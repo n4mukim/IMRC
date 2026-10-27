@@ -510,6 +510,11 @@ html:lang(ko) .site-footer h2,html:lang(ja) .site-footer h2{letter-spacing:.06em
 em.plain{font-style:normal;border:0;background:none;padding:0;color:var(--forest)}
 
 .proj-list{list-style:none;margin:.6rem 0 0;padding:0;display:grid;gap:.6rem}.proj-list li{padding-top:.6rem;border-top:1px solid var(--line,rgba(0,0,0,.1));font-size:.95rem}
-/* home: mission section on a soft brand gradient */
-.mission-grad{position:relative;margin:12px;border-radius:var(--r-l);overflow:hidden;isolation:isolate}
-.mission-grad::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(255,255,255,.62),rgba(255,255,255,.62)),url(/assets/gradient.jpg) center/cover no-repeat}
+/* home: mission section, four photo cards like the "choose your path" cards */
+.pcards-4{grid-template-columns:repeat(4,1fr);aspect-ratio:auto}
+.pcards-4 .pcard{aspect-ratio:3/4.1}
+.pcards-4 .pcard h3{max-width:none;font-size:clamp(1.15rem,1.5vw,1.4rem)}
+.pcards-4 .pcard p{max-width:none;padding-right:3.2rem}
+@media(max-width:1100px){.pcards-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.pcards-4{grid-template-columns:1fr}.pcards-4 .pcard{aspect-ratio:auto;min-height:260px}}
+.intro .lead{text-wrap:balance}

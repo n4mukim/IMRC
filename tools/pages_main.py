@@ -83,20 +83,22 @@ def home():
 <div class="iconsgrid">{items}</div></div></section>'''
 
     offer = [
-        (t("Culturally responsive psychotherapy", "문화적으로 민감한 심리치료", "文化に配慮した心理療法"), u("/find-care/")),
-        (t("Spiritually integrated counselling that respects your values and religion", "가치관과 종교를 존중하는 영성 통합 상담", "あなたの価値観や宗教を尊重するスピリチュアル統合カウンセリング"), u("/find-care/#spiritual")),
-        (t("Public mental health workshops, community programs and community support", "공개 정신건강 워크숍, 커뮤니티 프로그램, 지역사회 지원", "一般向けメンタルヘルスワークショップ、コミュニティプログラム、地域サポート"), u("/programs/")),
-        (t("Clinical supervision and professional training for therapists from diverse backgrounds", "다양한 배경의 치료사를 위한 임상 슈퍼비전과 전문 교육", "多様な背景を持つセラピストのための臨床スーパービジョンと専門トレーニング"), eu("/professionals/")),
+        (t("Therapy", "심리치료", "心理療法"), t("Culturally responsive psychotherapy", "문화적으로 민감한 심리치료", "文化に配慮した心理療法"), t("In English, Korean and Japanese.", "영어, 한국어, 일본어로 진행합니다.", "英語・韓国語・日本語で対応します。"), "img4:50% 50%", u("/find-care/")),
+        (t("Spiritual care", "영성 돌봄", "スピリチュアルケア"), t("Spiritually integrated counselling", "영성 통합 상담", "スピリチュアル統合カウンセリング"), t("Respects your values and religion.", "가치관과 종교를 존중합니다.", "あなたの価値観や宗教を尊重します。"), "img5:50% 50%", u("/find-care/#spiritual")),
+        (t("Community", "커뮤니티", "コミュニティ"), t("Programs and workshops", "프로그램과 워크숍", "プログラムとワークショップ"), t("Public mental health workshops and community support.", "공개 정신건강 워크숍과 지역사회 지원.", "一般向けメンタルヘルスワークショップと地域サポート。"), "img1:50% 50%", u("/programs/")),
+        (t("Professionals", "전문가", "専門職"), t("Supervision and training", "슈퍼비전과 교육", "スーパービジョンと研修"), t("For therapists from diverse backgrounds.", "다양한 배경의 치료사를 위해.", "多様な背景を持つセラピストのために。"), "img8:50% 50%", eu("/professionals/")),
     ]
-    offer_html = "".join(f'<li><a href="{h}"><span>{l}</span><span class="go">{icon("arrow-right")}</span></a></li>' for l, h in offer)
-    mission = f'''<section class="section mission-grad" aria-labelledby="mission-h"><div class="wrap split">
-<div class="reveal">{eyebrow(t("Our mission", "미션", "ミッション"))}<h2 id="mission-h" class="h2">{t("To nurture culturally grounded therapists and strengthen resilience in the communities we serve.",
+    ocards = "".join(
+        f'<a class="pcard reveal" style="--i:{i};--img:url(/img/{img.split(":")[0]}.jpg)" role="listitem" href="{h}"><span class="dot"></span><span class="who">{w}</span><h3>{ti}</h3><p>{d}</p><span class="go">{icon("arrow-right")}</span></a>'
+        for i, (w, ti, d, img, h) in enumerate(offer))
+    mission = f'''<section class="section" aria-labelledby="mission-h" style="padding-top:0"><div class="wrap center">
+<div class="intro reveal">{eyebrow(t("Our mission", "미션", "ミッション"))}<h2 id="mission-h" class="h2">{t("To nurture culturally grounded therapists and strengthen resilience in the communities we serve.",
                                                                                                         "문화에 뿌리를 둔 치료사를 길러내고, 지역사회의 회복탄력성을 키웁니다.",
                                                                                                         "文化に根ざしたセラピストを育て、地域社会のレジリエンスを高めること。")}</h2>
-<p style="margin-top:1.6rem" class="lead">{t("Compassion, respect for nature and commitment to community guide everything we do.",
-                                              "자비, 자연에 대한 존중, 공동체에 대한 헌신이 우리의 모든 활동을 이끕니다.",
-                                              "思いやり、自然への敬意、コミュニティへの献身が、私たちの活動の土台です。")}</p></div>
-<div class="reveal" style="--i:1">{eyebrow(t("What we offer", "제공하는 것", "提供するもの"))}<ul class="linklist">{offer_html}</ul></div></div></section>'''
+<p class="lead">{t("Compassion, respect for nature and commitment to community guide everything we do.",
+                   "자비, 자연에 대한 존중, 공동체에 대한 헌신이 우리의 모든 활동을 이끕니다.",
+                   "思いやり、自然への敬意、コミュニティへの献身が、私たちの活動の土台です。")}</p></div>
+<div class="pcards pcards-4" role="list" aria-label="{t("What we offer", "제공하는 것", "提供するもの")}">{ocards}</div></div></section>'''
 
     quote = f'''<section class="section quote" style="--img:url(/img/img3.jpg)" aria-label="{t("A thought that guides our work", "우리가 마음에 두는 문장", "私たちが大切にしている言葉")}"><div class="wrap reveal"><figure style="margin:0"><blockquote lang="en"><p style="margin:0">“The universe is a communion of subjects, not a collection of objects.”</p></blockquote>
 <figcaption>Thomas Berry{'<span class="trans" lang="ko">“우주는 대상들의 집합이 아니라 주체들의 친교입니다.” (참고용 번역)</span>' if L() == "ko" else ''}{'<span class="trans" lang="ja">「宇宙は対象の寄せ集めではなく、主体どうしの交わりである。」（参考訳）</span>' if L() == "ja" else ''}</figcaption></figure></div></section>'''
