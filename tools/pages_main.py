@@ -88,8 +88,14 @@ def home():
         (t("Community", "커뮤니티", "コミュニティ"), t("Programs and workshops", "프로그램과 워크숍", "プログラムとワークショップ"), t("Public mental health workshops and community support.", "공개 정신건강 워크숍과 지역사회 지원.", "一般向けメンタルヘルスワークショップと地域サポート。"), "img1:50% 50%", u("/programs/")),
         (t("Professionals", "전문가", "専門職"), t("Supervision and training", "슈퍼비전과 교육", "スーパービジョンと研修"), t("For therapists from diverse backgrounds.", "다양한 배경의 치료사를 위해.", "多様な背景を持つセラピストのために。"), "img8:50% 50%", eu("/professionals/")),
     ]
+    # circle colour follows who the offer is for: green = people seeking support, blue = clinicians
+    ocol = ["#00A64F", "#00A64F", "#00A64F", "#0E7DC2"]
+    olab = ["#007D3B", "#007D3B", "#007D3B", "#0B6AA6"]
+    opos = ["8% 20%", "55% 0%", "100% 70%", "40% 100%"]
+    more = t("Learn more", "자세히 보기", "詳しく見る")
     ocards = "".join(
-        f'<a class="pcard reveal" style="--i:{i};--img:url(/img/{img.split(":")[0]}.jpg)" role="listitem" href="{h}"><span class="dot"></span><span class="who">{w}</span><h3>{ti}</h3><p>{d}</p><span class="go">{icon("arrow-right")}</span></a>'
+        f'<a class="ocard reveal" style="--i:{i};--c:{ocol[i]};--lab:{olab[i]};--pos:{opos[i]}" role="listitem" href="{h}"><span class="ocard-img" aria-hidden="true"></span>'
+        f'<span class="ocard-body"><span class="ocard-who">{w}</span><h3>{ti}</h3><p>{d}</p><span class="ocard-more">{more}{icon("arrow-right")}</span></span></a>'
         for i, (w, ti, d, img, h) in enumerate(offer))
     mission = f'''<section class="section" aria-labelledby="mission-h" style="padding-top:0"><div class="wrap center">
 <div class="intro reveal">{eyebrow(t("Our mission", "미션", "ミッション"))}<h2 id="mission-h" class="h2">{t("To nurture culturally grounded therapists and strengthen resilience in the communities we serve.",
@@ -98,7 +104,7 @@ def home():
 <p class="lead">{t("Compassion, respect for nature and commitment to community guide everything we do.",
                    "자비, 자연에 대한 존중, 공동체에 대한 헌신이 우리의 모든 활동을 이끕니다.",
                    "思いやり、自然への敬意、コミュニティへの献身が、私たちの活動の土台です。")}</p></div>
-<div class="pcards pcards-4" role="list" aria-label="{t("What we offer", "제공하는 것", "提供するもの")}">{ocards}</div></div></section>'''
+<div class="ocards" role="list" aria-label="{t("What we offer", "제공하는 것", "提供するもの")}">{ocards}</div></div></section>'''
 
     quote = f'''<section class="section quote" style="--img:url(/img/img3.jpg)" aria-label="{t("A thought that guides our work", "우리가 마음에 두는 문장", "私たちが大切にしている言葉")}"><div class="wrap reveal"><figure style="margin:0"><blockquote lang="en"><p style="margin:0">“The universe is a communion of subjects, not a collection of objects.”</p></blockquote>
 <figcaption>Thomas Berry{'<span class="trans" lang="ko">“우주는 대상들의 집합이 아니라 주체들의 친교입니다.” (참고용 번역)</span>' if L() == "ko" else ''}{'<span class="trans" lang="ja">「宇宙は対象の寄せ集めではなく、主体どうしの交わりである。」（参考訳）</span>' if L() == "ja" else ''}</figcaption></figure></div></section>'''
