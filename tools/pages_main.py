@@ -143,11 +143,11 @@ def home():
 <div class="cards"></div>
 <p style="margin-top:1.4rem"><a class="link-arrow" href="{eu("/blog/")}">{t("Read the blog", "블로그 읽기", "ブログを読む")}{icon("arrow-right")}</a></p></div></section>'''
 
-    body = hero + intro + support + mission + quote + care + sessions + flagship + pros + articles
+    body = hero + intro + support + mission + quote   # the home page ends after the quote
     desc = t("IMRC offers psychotherapy, community programs and professional training for people whose lives cross cultures, in English, Korean and Japanese. Toronto, Ontario.",
              "IMRC는 문화와 문화 사이를 살아가는 분들을 위한 심리치료, 커뮤니티 프로그램, 전문가 교육을 영어·한국어·일본어로 제공합니다. 온타리오주 토론토.",
              "IMRCは、文化のあいだで生きる人びとのための心理療法、コミュニティプログラム、専門職トレーニングを、英語・韓国語・日本語で提供します。オンタリオ州トロント。")
-    return path, page(path, "IMRC — " + t("Intercultural Mental Health & Resilience Research Centre", "상호문화 정신건강 및 회복탄력성 연구센터", "異文化メンタルヘルス＆レジリエンス研究センター"), desc, body, scripts=BLOG_SCRIPTS)
+    return path, page(path, "IMRC — " + t("Intercultural Mental Health & Resilience Research Centre", "상호문화 정신건강 및 회복탄력성 연구센터", "異文化メンタルヘルス＆レジリエンス研究センター"), desc, body)
 
 
 # ---------------------------------------------------------------- ABOUT
