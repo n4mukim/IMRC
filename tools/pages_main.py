@@ -46,51 +46,57 @@ def home():
     hero = f'''<section class="hero nature photo" style="--img:url(/img/img1.jpg);--pos:50% 60%" aria-labelledby="hero-title"><div class="hero-inner">
 <p class="hello"><span class="greet" lang="en" aria-hidden="true">Hello</span><span class="sr">Hello, 안녕하세요, こんにちは</span></p>
 <h1 id="hero-title" class="display">{t("Care that understands <em>where you come from</em>", "당신이 <em>어디에서 왔는지</em> 이해하는 돌봄", "あなたが<em>どこから来たか</em>を理解するケア")}</h1>
-<p class="lead">{t("Therapy, community programs and training for people whose lives cross cultures. Everyone is welcome.",
-                   "문화와 문화 사이를 살아가는 분들을 위한 심리치료, 커뮤니티 프로그램, 교육. 누구나 환영합니다.",
-                   "文化のあいだで生きる人びとのための心理療法、コミュニティプログラム、トレーニング。どなたも歓迎します。")}</p>
+<p class="lead">{t("Psychotherapy, community programs and professional training for people whose lives cross cultures. Everyone is welcome here, whatever your background, language, identity or beliefs.",
+                   "문화와 문화 사이를 살아가는 분들을 위한 심리치료, 커뮤니티 프로그램, 전문가 교육. 배경, 언어, 정체성, 신념과 관계없이 누구나 환영합니다.",
+                   "文化のあいだで生きる人びとのための、心理療法、コミュニティプログラム、専門職向けトレーニング。背景、言語、アイデンティティ、信念を問わず、どなたも歓迎します。")}</p>
 <div class="btn-row">{btn(t("Register for a Program", "프로그램 신청", "プログラムに申し込む"), u("/programs/#calendar"), "reg")}{btn(t("Find a Practitioner", "치료사 찾기", "セラピストを探す"), u("/find-care/#practitioners"), "find")}</div>
 </div></section>'''
 
-    # "Choose your path" cards are colour-coded: green = seeking support, blue = clinicians, yellow = funders and partners
-    paths = f'''<section class="section" aria-labelledby="intro-h" style="padding-bottom:clamp(32px,5vw,64px)"><div class="wrap center">
-<div class="intro reveal">{eyebrow(t("Start here", "여기서 시작하세요", "はじめに"))}<h2 id="intro-h" class="h2">{t("Where would you like to start?", "어디서 시작할까요?", "どこから始めますか？")}</h2></div>
+    intro = f'''<section class="section" aria-labelledby="intro-h" style="padding-bottom:clamp(40px,6vw,80px)"><div class="wrap center">
+<div class="intro reveal">{eyebrow(t("About IMRC", "IMRC 소개", "IMRCについて"))}<h2 id="intro-h" class="h2">{t("A centre for people whose lives cross cultures", "문화와 문화 사이를 살아가는 분들을 위한 센터", "文化のあいだで生きる人びとのためのセンター")}</h2>
+<p class="lead">{t("We bring together culturally responsive psychotherapy, community programs, clinical supervision and professional training for therapists from diverse backgrounds.",
+                   "문화적으로 민감한 심리치료, 커뮤니티 프로그램, 임상 슈퍼비전, 다양한 배경의 치료사를 위한 전문 교육을 함께 이끌어 갑니다.",
+                   "文化に配慮した心理療法、コミュニティプログラム、臨床スーパービジョン、多様な背景を持つセラピストのための専門トレーニングを、ひとつにつなぎます。")}</p></div>
 <div class="pcards" role="list" aria-label="{t("Choose your path", "나에게 맞는 길 찾기", "目的から選ぶ")}">
-<a class="pcard aud-s reveal" style="--img:url(/img/img2.jpg)" role="listitem" href="{u("/programs/")}"><span class="dot"></span><span class="who">{t("Seeking support", "지원이 필요한 분", "サポートを探している方")}</span><h3>{t("I'm looking for support", "지원이 필요해요", "サポートを探しています")}</h3><p>{t("Programs and practitioners in your language.", "사용하시는 언어로 만나는 프로그램과 치료사.", "お使いの言語で受けられるプログラムとセラピスト。")}</p><span class="go">{icon("arrow-right")}</span></a>
-<a class="pcard aud-c reveal" style="--i:1;--img:url(/img/img7.jpg)" role="listitem" href="{eu("/professionals/")}"><span class="dot"></span><span class="who">{t("Clinicians", "임상가", "臨床家の方")}</span><h3>{t("I'm a clinician", "저는 임상가예요", "私は臨床家です")}</h3><p>{t("Supervision, workshops and consultation.", "슈퍼비전, 워크숍, 자문.", "スーパービジョン、ワークショップ、コンサルテーション。")}</p><span class="go">{icon("arrow-right")}</span></a>
-<a class="pcard aud-p reveal" style="--i:2;--img:url(/img/img8.jpg)" role="listitem" href="{u("/about/#partners")}"><span class="dot"></span><span class="who">{t("Funders & partners", "후원 · 협력", "助成・連携")}</span><h3>{t("I'm a funder or partner", "후원·협력 기관이에요", "助成・連携に関心があります")}</h3><p>{t("Our approach, partners and funders.", "우리의 접근 방식, 협력 기관, 후원자.", "私たちのアプローチ、パートナー、助成団体。")}</p><span class="go">{icon("arrow-right")}</span></a>
+<a class="pcard reveal" style="--img:url(/img/img2.jpg)" role="listitem" href="{u("/programs/")}"><span class="dot"></span><span class="who">{t("For people seeking support", "지원이 필요한 분", "サポートを探している方")}</span><h3>{t("I'm looking for support", "지원이 필요해요", "サポートを探しています")}</h3><p>{t("Join a program, or find a practitioner who works in your language.", "프로그램에 참여하거나, 사용하시는 언어로 상담하는 치료사를 찾아보세요.", "プログラムに参加する、またはお使いの言語で対応できるセラピストを探せます。")}</p><span class="go">{icon("arrow-right")}</span></a>
+<a class="pcard reveal" style="--i:1;--img:url(/img/img7.jpg)" role="listitem" href="{eu("/professionals/")}"><span class="dot"></span><span class="who">{t("For clinicians", "임상가", "臨床家の方")}</span><h3>{t("I'm a clinician", "저는 임상가예요", "私は臨床家です")}</h3><p>{t("Supervision, workshops and consultation groups for therapists.", "치료사를 위한 슈퍼비전, 워크숍, 자문 그룹.", "セラピストのためのスーパービジョン、ワークショップ、コンサルテーショングループ。")}</p><span class="go">{icon("arrow-right")}</span></a>
+<a class="pcard reveal" style="--i:2;--img:url(/img/img8.jpg)" role="listitem" href="{u("/about/#partners")}"><span class="dot"></span><span class="who">{t("For funders and partners", "후원 · 협력", "助成・連携")}</span><h3>{t("I'm a funder or partner", "후원·협력 기관이에요", "助成・連携に関心があります")}</h3><p>{t("Our approach, governance, partners and funders.", "우리의 접근 방식, 거버넌스, 협력 기관과 후원자.", "私たちのアプローチ、ガバナンス、パートナーと助成団体。")}</p><span class="go">{icon("arrow-right")}</span></a>
 </div></div></section>
 <section class="stats reveal" aria-label="{t("At a glance", "한눈에 보기", "ひと目でわかるIMRC")}">
-<div class="stat"><b>3</b><span>{t("Languages: English, 한국어, 日本語", "언어: 영어, 한국어, 일본어", "対応言語：英語・韓国語・日本語")}</span></div>
-<div class="stat"><b>30+</b><span>{t("Years of clinical experience", "년의 임상 경력", "年の臨床経験")}</span></div>
-<div class="stat"><b>5</b><span>{t("Therapy approaches", "가지 치료 접근법", "つのアプローチ")}</span></div>
-<div class="stat"><b>Ontario</b><span>{t("Video sessions, Toronto-based", "화상 상담, 토론토 기반", "オンライン対応、トロント拠点")}</span></div>
+<div class="stat"><b>3</b><span>{t("Languages of care: English, 한국어, 日本語", "상담 언어: 영어, 한국어, 일본어", "対応言語：英語、韓国語、日本語")}</span></div>
+<div class="stat"><b>30+</b><span>{t("Years of clinical experience (Emma Lim, RP, founder and director)", "임상 경력 (설립자·디렉터 Emma Lim, RP)", "臨床経験（創設者・ディレクター Emma Lim, RP）")}</span></div>
+<div class="stat"><b>5</b><span>{t("Approaches: AEDP, ACT, DBT, mindfulness-based, sandplay", "접근법: AEDP, ACT, DBT, 마음챙김 기반, 모래놀이", "アプローチ：AEDP、ACT、DBT、マインドフルネス、箱庭")}</span></div>
+<div class="stat"><b>Ontario</b><span>{t("Video sessions across Ontario; Toronto-based", "온타리오 전역 화상 세션, 토론토 기반", "オンタリオ全域でオンライン対応、トロント拠点")}</span></div>
 </section>'''
 
-    who = [("couples", t("Intercultural couples and families", "문화가 다른 커플·가족", "異文化カップル・家族")),
-           ("child", t("Children and youth between cultures", "문화 사이에서 자라는 아동·청소년", "文化のはざまで育つ子ども・若者")),
+    who = [("couples", t("Intercultural couples and families", "문화가 다른 커플과 가족", "異文化カップルと家族")),
+           ("child", t("Children and youth growing up between cultures, including biracial and multiracial kids", "문화 사이에서 자라는 아동·청소년 (혼혈·다인종 포함)", "文化のはざまで育つ子ども・若者（ミックスルーツ、マルチレイシャルを含む）")),
            ("senior", t("Seniors", "노년층", "シニア")),
-           ("neuro", t("Neurodivergent people and families", "신경다양성을 가진 분과 가족", "ニューロダイバージェントの方とご家族")),
+           ("neuro", t("Neurodivergent people and their families", "신경다양성을 가진 분과 가족", "ニューロダイバージェントの方とご家族")),
            ("heart", t("2SLGBTQ+ people", "2SLGBTQ+ 분들", "2SLGBTQ+の方")),
-           ("shield", t("People facing social or economic barriers", "사회·경제적 어려움을 겪는 분들", "社会的・経済的な困難に直面する人びと"))]
-    tiles = "".join(f'<div class="tile reveal" style="--i:{i % 3}"><span class="icon-badge"><svg viewBox="0 0 48 48" aria-hidden="true">{_ICONS_GRID[k]}</svg></span>{lbl}</div>' for i, (k, lbl) in enumerate(who))
-    support = f'''<section class="section aud-s" aria-labelledby="who-h" style="padding-top:clamp(24px,4vw,48px)"><div class="wrap center">
-<div class="reveal">{eyebrow(t("Who we support", "함께하는 사람들", "支援の対象"))}<h2 id="who-h" class="h2 punch">{t("Everyone is welcome here", "누구나 이곳에서 환영받습니다", "どなたも、ここでは歓迎されます")}</h2>
-<p class="sub-punch">{t("Whatever your background, language, identity or beliefs.", "배경, 언어, 정체성, 신념과 관계없이.", "背景、言語、アイデンティティ、信念を問わず。")}</p></div>
-<div class="tiles tiles-3">{tiles}</div></div></section>'''
+           ("shield", t("People and communities facing social or economic barriers", "사회·경제적 어려움을 겪는 분들과 지역사회", "社会的・経済的な困難に直面する人びとやコミュニティ")),
+           ("leaf", t("Therapists looking after their own mental health", "자신의 정신건강을 돌보는 치료사", "ご自身のメンタルヘルスをケアするセラピスト"))]
+    items = "".join(f'<div class="iconitem reveal" style="--i:{i % 4}"><svg viewBox="0 0 48 48" aria-hidden="true">{_ICONS_GRID[k]}</svg><p>{lbl}</p></div>' for i, (k, lbl) in enumerate(who))
+    support = f'''<section class="dark nature photo section" style="--img:url(/img/img6.jpg);--pos:50% 40%" aria-labelledby="who-h"><div class="wrap center">
+<div class="reveal">{eyebrow(t("Who we support", "함께하는 사람들", "支援の対象"))}<h2 id="who-h" class="h2">{t("Everyone is welcome here", "누구나 이곳에서 환영받습니다", "どなたも、ここでは歓迎されます")}</h2>
+<p class="lead" style="margin-top:1rem">{t("Whatever your background, language, identity or beliefs.", "배경, 언어, 정체성, 신념과 관계없이.", "背景、言語、アイデンティティ、信念を問わず。")}</p></div>
+<div class="iconsgrid">{items}</div></div></section>'''
 
     offer = [
-        ("s", "message", t("Culturally responsive therapy", "문화적으로 민감한 심리치료", "文化に配慮した心理療法"), u("/find-care/")),
-        ("s", "leaf", t("Spiritual care that respects your beliefs", "신념을 존중하는 영성 돌봄", "信念を尊重するスピリチュアルケア"), u("/find-care/#spiritual")),
-        ("s", "users", t("Community programs and workshops", "커뮤니티 프로그램과 워크숍", "コミュニティプログラムとワークショップ"), u("/programs/")),
-        ("c", "book", t("Supervision and training for therapists", "치료사를 위한 슈퍼비전·교육", "セラピストのためのスーパービジョン・研修"), eu("/professionals/")),
+        (t("Culturally responsive psychotherapy", "문화적으로 민감한 심리치료", "文化に配慮した心理療法"), u("/find-care/")),
+        (t("Spiritually integrated counselling that respects your values and religion", "가치관과 종교를 존중하는 영성 통합 상담", "あなたの価値観や宗教を尊重するスピリチュアル統合カウンセリング"), u("/find-care/#spiritual")),
+        (t("Public mental health workshops, community programs and community support", "공개 정신건강 워크숍, 커뮤니티 프로그램, 지역사회 지원", "一般向けメンタルヘルスワークショップ、コミュニティプログラム、地域サポート"), u("/programs/")),
+        (t("Clinical supervision and professional training for therapists from diverse backgrounds", "다양한 배경의 치료사를 위한 임상 슈퍼비전과 전문 교육", "多様な背景を持つセラピストのための臨床スーパービジョンと専門トレーニング"), eu("/professionals/")),
     ]
-    otiles = "".join(f'<a class="tile aud-{a} reveal" style="--i:{i}" href="{h}"><span class="icon-badge">{icon(ic)}</span>{lbl}</a>' for i, (a, ic, lbl, h) in enumerate(offer))
-    mission = f'''<section class="section" aria-labelledby="mission-h" style="padding-top:0"><div class="wrap center">
-<div class="reveal">{eyebrow(t("What we offer", "제공하는 것", "提供するもの"))}<h2 id="offer-h" class="h2">{t("Care, community and learning", "돌봄, 공동체, 배움", "ケア、コミュニティ、学び")}</h2></div>
-<div class="tiles">{otiles}</div>
-<div class="reveal" style="margin-top:clamp(56px,8vw,110px)">{eyebrow(t("Our mission", "미션", "ミッション"))}<h2 id="mission-h" class="h2 punch">{t("Culturally grounded therapists. Resilient communities.", "문화에 뿌리를 둔 치료사. 회복탄력적인 지역사회.", "文化に根ざしたセラピスト。レジリエンスのある地域社会。")}</h2>
-<p class="sub-punch">{t("Compassion, respect for nature and a commitment to community guide everything we do.", "자비, 자연에 대한 존중, 공동체에 대한 헌신이 우리의 모든 활동을 이끕니다.", "思いやり、自然への敬意、コミュニティへの献身が、私たちの活動の土台です。")}</p></div></div></section>'''
+    offer_html = "".join(f'<li><a href="{h}"><span>{l}</span><span class="go">{icon("arrow-right")}</span></a></li>' for l, h in offer)
+    mission = f'''<section class="section" aria-labelledby="mission-h"><div class="wrap split">
+<div class="reveal">{eyebrow(t("Our mission", "미션", "ミッション"))}<h2 id="mission-h" class="h2">{t("To nurture the next generation of values-oriented, culturally grounded therapists, and to strengthen resilience in the communities we serve.",
+                                                                                                        "가치 지향적이고 문화에 뿌리를 둔 차세대 치료사를 길러내고, 우리가 함께하는 지역사회의 회복탄력성을 키웁니다.",
+                                                                                                        "価値観を大切にし、文化に根ざした次世代のセラピストを育て、私たちが関わる地域社会のレジリエンスを高めること。")}</h2>
+<p style="margin-top:1.6rem" class="lead">{t("Compassion, respect for nature and animals, and a commitment to community are part of everything we do. We work toward a more peaceful world across cultures.",
+                                              "자비와 연민, 자연과 동물에 대한 존중, 공동체에 대한 헌신이 우리가 하는 모든 일의 바탕입니다. 문화를 넘어 더 평화로운 세상을 향해 나아갑니다.",
+                                              "思いやり、自然と動物への敬意、コミュニティへの献身が、私たちのあらゆる活動の土台です。文化を越えて、より平和な世界を目指します。")}</p></div>
+<div class="reveal" style="--i:1">{eyebrow(t("What we offer", "제공하는 것", "提供するもの"))}<ul class="linklist">{offer_html}</ul></div></div></section>'''
 
     quote = f'''<section class="section quote" style="--img:url(/img/img3.jpg)" aria-label="{t("A thought that guides our work", "우리가 마음에 두는 문장", "私たちが大切にしている言葉")}"><div class="wrap reveal"><figure style="margin:0"><blockquote lang="en"><p style="margin:0">“The universe is a communion of subjects, not a collection of objects.”</p></blockquote>
 <figcaption>Thomas Berry{'<span class="trans" lang="ko">“우주는 대상들의 집합이 아니라 주체들의 친교입니다.” (참고용 번역)</span>' if L() == "ko" else ''}{'<span class="trans" lang="ja">「宇宙は対象の寄せ集めではなく、主体どうしの交わりである。」（参考訳）</span>' if L() == "ja" else ''}</figcaption></figure></div></section>'''
@@ -101,33 +107,35 @@ def home():
     lcards = "".join(
         f'<a class="langcard reveal" style="--i:{i}" href="{u("/find-care/#practitioners")}"><span class="hi" lang="{c}">{hi}</span><span><strong lang="{c}">{nm}</strong><span class="sub-l">{d}</span></span><span class="go">{icon("arrow-right")}</span></a>'
         for i, (c, hi, nm, d) in enumerate(langs))
-    care = f'''<section class="section aud-s" aria-labelledby="care-h"><div class="wrap split">
+    approaches = "".join(f'<li class="pill">{a}</li>' for a in ("AEDP", "ACT", "DBT", t("Mindfulness-based", "마음챙김 기반", "マインドフルネス"), t("Sandplay", "모래놀이", "箱庭・サンドプレイ")))
+    care = f'''<section class="section" style="padding-top:0" aria-labelledby="care-h"><div class="wrap split">
 <div class="reveal">{eyebrow(t("Find Care", "케어 찾기", "ケアを探す"))}<h2 id="care-h" class="h2">{t("Find care in the language you think in", "생각하는 언어로 받는 돌봄", "考えるときの言葉で受けるケア")}</h2>
-<p class="lead" style="margin-top:1rem">{t("Choose a language to see who works in it.", "언어를 선택해 상담 가능한 치료사를 확인하세요.", "言語を選んで、対応できるセラピストをご覧ください。")}</p>
-<p style="margin-top:1.6rem">{btn(t("See practitioners", "치료사 보기", "セラピストを見る"), u("/find-care/"), "dark")}</p></div>
+<p class="lead" style="margin-top:1rem">{t("Clinical services are provided by the practitioner named on each profile. Choose a language to see who works in it.", "임상 서비스는 각 프로필에 표기된 치료사가 직접 제공합니다. 언어를 선택해 상담 가능한 치료사를 확인하세요.", "臨床サービスは、各プロフィールに記載されたセラピストが提供します。言語を選んで、対応できるセラピストをご覧ください。")}</p>
+<ul class="pills" aria-label="{t("Approaches", "치료 접근법", "アプローチ")}">{approaches}</ul>
+<p style="margin-top:1.6rem">{btn(t("See approaches and practitioners", "접근법과 치료사 보기", "アプローチとセラピストを見る"), u("/find-care/"), "dark")}</p></div>
 <div class="langcards">{lcards}</div></div></section>'''
 
-    sessions = f'''<section class="section aud-s" style="padding-top:0" id="sessions" aria-labelledby="sess-h"><div class="wrap">
+    sessions = f'''<section class="section" style="padding-top:0" id="sessions" aria-labelledby="sess-h"><div class="wrap">
 <div class="sec-head reveal">{eyebrow(t("Programs & Events", "프로그램 · 행사", "プログラム・イベント"))}<h2 id="sess-h" class="h2">{t("Upcoming sessions", "예정된 세션", "開催予定のセッション")}</h2></div>
 <div class="reveal">{sessions_block(3, "sess-empty")}</div>
 <p style="margin-top:1.4rem"><a class="link-arrow" href="{u("/programs/")}">{t("Browse all programs", "전체 프로그램 보기", "すべてのプログラムを見る")}{icon("arrow-right")}</a></p></div></section>'''
 
-    flagship = f'''<section class="dark nature photo section aud-s" style="--img:url(/img/img4.jpg);--pos:50% 55%" aria-labelledby="flag-h"><div class="wrap center">
-<div class="reveal">{eyebrow(t("Flagship project", "대표 프로젝트", "代表プロジェクト"))}<h2 id="flag-h" class="h2 punch" style="color:#fff">{t("Lotus Project: Cancer, Spirituality &amp; Resilience", "연꽃(로터스) 프로젝트: 암, 영성과 회복탄력성", "ロータス・プロジェクト：がん、スピリチュアリティとレジリエンス")}</h2>
-<p class="sub-punch" style="color:rgba(255,255,255,.92)">{t("Group support for people affected by cancer. Korean, Japanese and English tracks.", "암의 영향을 받은 분들을 위한 그룹 지원. 한국어·일본어·영어 트랙.", "がんの影響を受けた方のためのグループサポート。韓国語・日本語・英語のトラック。")}</p>
-<p style="margin-top:1.6rem">{btn(t("Read about the project", "프로젝트 알아보기", "プロジェクトについて"), u("/programs/#flagship"), "white")}</p></div></div></section>'''
+    flagship = f'''<section class="dark nature photo section" style="--img:url(/img/img4.jpg);--pos:50% 55%" aria-labelledby="flag-h"><div class="wrap split">
+<div class="reveal">{eyebrow(t("Flagship project", "대표 프로젝트", "代表プロジェクト"))}<p class="status">{t("Hybrid · Korean, Japanese and English tracks", "혼합(하이브리드) · 한국어·일본어·영어 트랙", "ハイブリッド・韓国語／日本語／英語トラック")}</p>
+<h2 id="flag-h" class="h2">{t("Lotus Project: Cancer, Spirituality &amp; Resilience", "연꽃(로터스) 프로젝트: 암, 영성과 회복탄력성", "ロータス・プロジェクト：がん、スピリチュアリティとレジリエンス")}</h2>
+<p class="lead" style="margin-top:1.2rem">{t("A Cancer Family Meaning-Making & Resilience Circle: one in-person session in October, then monthly online sessions, with Korean, Japanese and English tracks.", "암 가족 의미 만들기와 회복탄력성 서클: 10월 대면 세션 1회, 이후 매월 온라인 세션. 한국어·일본어·영어 트랙이 있습니다.", "がん家族の意味づけとレジリエンスのサークル。10月に対面セッションを1回、その後は毎月オンラインで開催します。韓国語・日本語・英語のトラックがあります。")}</p>
+<p style="margin-top:1.6rem">{btn(t("Read about the project", "프로젝트 알아보기", "プロジェクトについて"), u("/programs/#flagship"), "white")}</p></div>
+<div class="pillar-list">
+<div class="pillar reveal"><h3>{t("Community program", "커뮤니티 프로그램", "コミュニティプログラム")}</h3><p>{t("Group support for people affected by cancer, with room for spiritual and existential questions.", "암의 영향을 받은 분들을 위한 그룹 지원, 영적·실존적 질문을 나눌 공간.", "がんの影響を受けた方のためのグループサポート。スピリチュアルで実存的な問いを語り合える場。")}</p></div>
+</div></div></section>'''
 
-    pros = f'''<section class="section aud-c" aria-labelledby="pro-h"><div class="wrap"><div class="band"><div class="split split-even">
-<div class="reveal">{eyebrow(t("For clinicians", "임상가를 위해", "臨床家の方へ"))}<h2 id="pro-h" class="h2">{t("Supervision and learning for therapists", "치료사를 위한 슈퍼비전과 배움", "セラピストのためのスーパービジョンと学び")}</h2>
-<p style="margin-top:1.6rem">{btn(t("Enquire about supervision", "슈퍼비전 문의", "スーパービジョンについて問い合わせる"), u("/contact/"), "dark")}</p></div>
-<div class="tiles" style="margin-top:0">
-<a class="tile reveal" href="{eu("/professionals/#supervision")}" style="background:#fff"><span class="icon-badge">{icon("users")}</span>{t("Clinical supervision", "임상 슈퍼비전", "臨床スーパービジョン")}</a>
-<a class="tile reveal" style="--i:1;background:#fff" href="{eu("/professionals/#workshops")}"><span class="icon-badge">{icon("book")}</span>{t("Workshops and consultation groups", "워크숍과 자문 그룹", "ワークショップとコンサルテーション")}</a></div>
-</div></div></div></section>
-<section class="section aud-p" style="padding-top:0" aria-labelledby="part-h"><div class="wrap"><div class="band band-p"><div class="split split-even">
-<div class="reveal">{eyebrow(t("Funders & partners", "후원 · 협력", "助成・連携"))}<h2 id="part-h" class="h2">{t("Partner with us", "함께해 주세요", "ともに歩みませんか")}</h2></div>
-<div class="reveal" style="--i:1"><p class="lead">{t("Help strengthen intercultural mental health care in Ontario.", "온타리오의 상호문화 정신건강 돌봄을 함께 키워 가요.", "オンタリオの異文化メンタルヘルスケアを、ともに育てましょう。")}</p>
-<div class="btn-row" style="margin-top:1.4rem">{btn(t("Partners & funders", "협력 기관과 후원자", "パートナーと助成団体"), u("/about/#partners"), "dark")}{btn(t("Get in touch", "문의하기", "お問い合わせ"), u("/contact/"), "dark")}</div></div>
+    pros = f'''<section class="section" aria-labelledby="pro-h"><div class="wrap"><div class="band-blue" style="margin:0;padding:clamp(28px,5vw,64px)"><div class="split split-even" style="align-items:center">
+<div class="reveal">{eyebrow(t("For Professionals", "전문가를 위해", "専門職の方へ"))}<h2 id="pro-h" class="h2">{t("For clinicians", "임상가를 위한 공간", "臨床家の方へ")}</h2>
+<p class="lead" style="margin-top:1rem">{t("Clinical supervision for RPs, RPs (Qualifying) and other mental health clinicians, plus workshops and consultation groups.", "등록심리치료사(RP), 수련 중인 RP (Qualifying), 기타 정신건강 임상가를 위한 임상 슈퍼비전과 워크숍, 자문 그룹.", "RP、RP (Qualifying)、その他のメンタルヘルス臨床家のための臨床スーパービジョン、ワークショップ、コンサルテーショングループ。")}</p></div>
+<div class="reveal" style="--i:1"><div class="cards">
+<div class="card"><span class="icon-badge">{icon("users")}</span><h3>{t("Clinical Supervision", "임상 슈퍼비전", "臨床スーパービジョン")}</h3><p><a class="link-arrow" href="{eu("/professionals/#supervision")}">{t("How it works", "진행 방식", "進め方")}{icon("arrow-right")}</a></p></div>
+<div class="card"><span class="icon-badge">{icon("book")}</span><h3>{t("Workshops &amp; Consultation Groups", "워크숍과 자문 그룹", "ワークショップとコンサルテーション")}</h3><p><a class="link-arrow" href="{eu("/professionals/#workshops")}">{t("See what's planned", "계획 보기", "予定を見る")}{icon("arrow-right")}</a></p></div></div>
+<p style="margin-top:1.4rem">{btn(t("Enquire about supervision", "슈퍼비전 문의", "スーパービジョンについて問い合わせる"), u("/contact/"), "dark")}</p></div>
 </div></div></div></section>'''
 
     articles = f'''<section class="section" style="padding-top:0" data-blog-latest hidden aria-labelledby="art-h"><div class="wrap">
@@ -135,7 +143,7 @@ def home():
 <div class="cards"></div>
 <p style="margin-top:1.4rem"><a class="link-arrow" href="{eu("/blog/")}">{t("Read the blog", "블로그 읽기", "ブログを読む")}{icon("arrow-right")}</a></p></div></section>'''
 
-    body = hero + paths + support + mission + quote + care + sessions + flagship + pros + articles
+    body = hero + intro + support + mission + quote + care + sessions + flagship + pros + articles
     desc = t("IMRC offers psychotherapy, community programs and professional training for people whose lives cross cultures, in English, Korean and Japanese. Toronto, Ontario.",
              "IMRC는 문화와 문화 사이를 살아가는 분들을 위한 심리치료, 커뮤니티 프로그램, 전문가 교육을 영어·한국어·일본어로 제공합니다. 온타리오주 토론토.",
              "IMRCは、文化のあいだで生きる人びとのための心理療法、コミュニティプログラム、専門職トレーニングを、英語・韓国語・日本語で提供します。オンタリオ州トロント。")
@@ -201,7 +209,7 @@ def about():
 <div class="card"><h3>{t("Leadership", "리더십", "リーダーシップ")}</h3><p>{t("Founder & Director: Emma Lim, RP. A Multicultural Community Advisory Committee is in formation.", "설립자·디렉터: Emma Lim, RP. 다문화 지역사회 자문위원회를 구성하고 있습니다.", "創設者・ディレクター：Emma Lim, RP。多文化コミュニティ諮問委員会を組成中です。")}</p><p class="small muted">{t("Team members are listed with their exact registered titles.", "팀원은 등록된 정확한 직함으로 소개합니다.", "チームメンバーは登録されている正確な肩書で紹介します。")}</p></div>
 </div></div></section>'''
 
-    partners = f'''<section class="section aud-p" id="partners" style="padding-top:0" aria-labelledby="partners-h"><div class="wrap">
+    partners = f'''<section class="section" id="partners" style="padding-top:0" aria-labelledby="partners-h"><div class="wrap">
 <div class="sec-head reveal">{eyebrow(t("Partners & Funders", "협력 기관과 후원자", "パートナーと助成団体"))}<h2 id="partners-h" class="h2">{t("Working alongside others", "함께 일하는 분들", "ともに歩む仲間")}</h2></div>
 <div class="empty reveal"><div><h3>{t("Partners and funders are named here once they agree in writing.", "협력 기관과 후원자는 서면 동의를 받은 후 이곳에 소개합니다.", "パートナーと助成団体は、書面での同意を得たのちに、こちらに掲載します。")}</h3><p class="muted">{t("Interested in working with the Centre?", "센터와 함께하고 싶으신가요?", "センターとの連携にご関心がありますか？")}</p></div>
 <div>{btn(t("Send a partnership enquiry", "협력 문의 보내기", "連携について問い合わせる"), u("/contact/"), "dark")}</div></div></div></section>'''
@@ -292,7 +300,7 @@ def find_care():
     body = hero + approaches + focus_sec + spiritual + practitioners + before
     return path, page(path, t("Find Care", "케어 찾기", "ケアを探す"),
                       t("Find care in English, Korean or Japanese. Approaches, areas of focus, spiritual care and practitioners at IMRC.", "영어, 한국어, 일본어로 받는 돌봄. IMRC의 치료 접근법, 중점 분야, 영성 돌봄, 치료사 목록.", "英語・韓国語・日本語で受けられるケア。IMRCのアプローチ、重点分野、スピリチュアルケア、セラピスト一覧。"),
-                      body, jsonld=[person], crumbs=[("Home", u("/")), ("Find Care", u(path))], aud="s")
+                      body, jsonld=[person], crumbs=[("Home", u("/")), ("Find Care", u(path))])
 
 
 # ---------------------------------------------------------------- PROGRAMS
@@ -351,7 +359,7 @@ def programs():
     body = hero + calendar + allp + flagship + cmh
     return path, page(path, t("Programs & Events", "프로그램 · 행사", "プログラム・イベント"),
                       t("Group programs, workshops and community events at IMRC, with the service type listed for each.", "IMRC의 그룹 프로그램, 워크숍, 커뮤니티 행사. 각 프로그램의 서비스 유형을 함께 안내합니다.", "IMRCのグループプログラム、ワークショップ、コミュニティイベント。各プログラムのサービスの種類を明記しています。"),
-                      body, crumbs=[("Home", u("/")), ("Programs & Events", u(path))], aud="s")
+                      body, crumbs=[("Home", u("/")), ("Programs & Events", u(path))])
 
 
 # ---------------------------------------------------------------- CONTACT

@@ -187,23 +187,11 @@ def lang_switch(path, translated):
     return "".join(out)
 
 
-def aud_of(href):
-    """Colour code for who a link is for: s = people seeking support (green), c = clinicians (blue), p = funders and partners (yellow)."""
-    if "/find-care/" in href or "/programs/" in href:
-        return "s"
-    if "/professionals/" in href:
-        return "c"
-    if "/about/#partners" in href:
-        return "p"
-    return ""
-
-
 def header(path, translated):
     items = []
     for label, href, subs in nav_items():
-        sub = "".join(f'<li><a href="{h}"{(" data-aud=" + chr(34) + aud_of(h) + chr(34)) if aud_of(h) else ""}>{s}</a></li>' for s, h in subs)
-        a = aud_of(href)
-        items.append(f'<li><a href="{href}"{(" data-aud=" + chr(34) + a + chr(34)) if a else ""}>{label}{icon("chevron-down")}</a><ul class="sub">{sub}</ul></li>')
+        sub = "".join(f'<li><a href="{h}">{s}</a></li>' for s, h in subs)
+        items.append(f'<li><a href="{href}">{label}{icon("chevron-down")}</a><ul class="sub">{sub}</ul></li>')
     mobile = []
     for label, href, subs in nav_items():
         links = f'<a href="{href}"><strong>{t("Overview", "개요", "概要")}</strong></a>' + "".join(f'<a href="{h}">{s}</a>' for s, h in subs)
@@ -275,7 +263,7 @@ FONTS = {
 }
 
 
-def page(path, title, desc, body, translated=True, jsonld=None, crumbs=None, lang_notice=False, scripts="", body_attrs="", og=None, noindex=False, aud=""):
+def page(path, title, desc, body, translated=True, jsonld=None, crumbs=None, lang_notice=False, scripts="", body_attrs="", og=None, noindex=False):
     """Return a full HTML document for the current language."""
     lg = L()
     full_title = title if title.startswith("IMRC") else f"{title} · IMRC"
@@ -337,7 +325,7 @@ def page(path, title, desc, body, translated=True, jsonld=None, crumbs=None, lan
 </head>
 <body{body_attrs}>
 {header(path, translated)}
-<main id="main" tabindex="-1"{(" class=" + chr(34) + "aud-" + aud + chr(34)) if aud else ""}>
+<main id="main" tabindex="-1">
 {notice}{body}
 </main>
 {footer()}

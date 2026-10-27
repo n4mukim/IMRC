@@ -26,7 +26,7 @@ def professionals():
 <div data-sessions data-limit="0"></div></div></div></section>
 <section class="section-tight" style="padding-top:0"><div class="wrap-narrow">{crisis_box()}</div></section>'''
     return _wrap(path, "For Professionals", "Clinical supervision, workshops and consultation groups for RPs, RPs (Qualifying) and other mental health clinicians.",
-                 "Supervision and learning for <em>clinicians</em>", "Clinical supervision, workshops and consultation groups for therapists.", body, "For Professionals", "img8:50% 50%", aud="c")
+                 "Supervision and learning for <em>clinicians</em>", "Clinical supervision, workshops and consultation groups for therapists.", body, "For Professionals", "img8:50% 50%")
 
 
 def _blog_page(path, title, desc, h1, lead, body, mode, pos="img2:50% 50%"):
